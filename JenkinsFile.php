@@ -44,7 +44,7 @@
 	$run_id = $runs[0]->id;
 
 	$authorization = array(
-		"authorization: Bearer Z3VkdDhhY3ZscWM2dXFnaWQ0YzhzMzY1NGRkcTlkOXJxdWl0MzVrYTlpbHMydG0yY2g3bnE4M21iMCY5NSYxNTM3OTI0NzkxMzg3",
+		"authorization: Bearer bTE4OThmZGpoYmoxODRuZ2FxZnN0cGtkZmsxNHJpYzV2ZjFxZmNxMDdnMWdwaDB0a2c1OGMwb3I2MCY5NSYxNTM4MDYyMjcxOTA5",
 		"content-type: application/json"
 	);
 
