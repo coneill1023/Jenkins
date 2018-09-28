@@ -53,7 +53,7 @@
 		'https://app.observepoint.com/api/report/compliance/business/condition-overview?run_id=' . $run_id . '&rule_id=50030879&result_type=failed&limit=100&skip=0',
 		'POST',
 		$authorization,
-		"{\"itemId\":81637464,\"itemType\":\"tag\",\"parentId\":null,\"parentType\":null}"
+		"{\"itemId\":82170981,\"itemType\":\"tag\",\"parentId\":null,\"parentType\":null}"
 	));
 
 	$string = $rule_results->data->description->name . " is missing on the following pages:\n";
