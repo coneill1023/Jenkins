@@ -29,7 +29,11 @@
 	}
 
 
-	// get latest run id
+	/*
+	 *  latest run id
+	 *
+	*/
+
 	$authorization = array(
 		"authorization: api_key aW1xOXFjNG91MmpzZ2psZ2ZuOTNtcGZmbWczdDYwajJhYnI2dTVzYjdsdTI3YWdzZjEzajgwOGtjMCY5NSYxNDgzNzI2MDg5ODgz",
 		"content-type: application/json"
@@ -43,17 +47,60 @@
 
 	$run_id = $runs[0]->id;
 
+
+	/*
+	 *  rule id
+	 *
+	*/
+
+	$authorization = array(
+		"authorization: api_key aW1xOXFjNG91MmpzZ2psZ2ZuOTNtcGZmbWczdDYwajJhYnI2dTVzYjdsdTI3YWdzZjEzajgwOGtjMCY5NSYxNDgzNzI2MDg5ODgz",
+		"content-type: application/json"
+	);
+
+	$rule = json_decode(api_request(
+		'https://api.observepoint.com/v2/web-audits/72142/runs/' . $run_id . '/results/compliance/business',
+		'GET',
+		$authorization
+	));
+
+	$rule_id = $rule->overviews[0]->compliance[0]->id;
+
+
+	/*
+	 *  item id
+	 *
+	*/
+
 	$authorization = array(
 		"authorization: Bearer bTE4OThmZGpoYmoxODRuZ2FxZnN0cGtkZmsxNHJpYzV2ZjFxZmNxMDdnMWdwaDB0a2c1OGMwb3I2MCY5NSYxNTM4MDYyMjcxOTA5",
 		"content-type: application/json"
 	);
 
-	// get rule failures
+	$item = json_decode(api_request(
+		'https://app.observepoint.com/api/report/compliance/business/rule-overview?run_id=' . $run_id . '&rule_id=' . $rule_id,
+		'GET',
+		$authorization
+	));
+
+	$item_id = $item->data->failedConditions[0]->conditionResult->id;
+
+
+	/*
+	 *  get rule failures
+	 *
+	*/
+
+	$authorization = array(
+		"authorization: Bearer bTE4OThmZGpoYmoxODRuZ2FxZnN0cGtkZmsxNHJpYzV2ZjFxZmNxMDdnMWdwaDB0a2c1OGMwb3I2MCY5NSYxNTM4MDYyMjcxOTA5",
+		"content-type: application/json"
+	);
+
 	$rule_results = json_decode(api_request(
-		'https://app.observepoint.com/api/report/compliance/business/condition-overview?run_id=' . $run_id . '&rule_id=50030879&result_type=failed&limit=100&skip=0',
+		'https://app.observepoint.com/api/report/compliance/business/condition-overview?run_id=' . $run_id . '&rule_id=' . $rule_id . '&result_type=failed&limit=100&skip=0',
 		'POST',
 		$authorization,
-		"{\"itemId\":82170981,\"itemType\":\"tag\",\"parentId\":null,\"parentType\":null}"
+		"{\"itemId\":$item_id,\"itemType\":\"tag\",\"parentId\":null,\"parentType\":null}"
 	));
 
 	$string = $rule_results->data->description->name . " is missing on the following pages:\n";
@@ -102,3 +149,4 @@
 	slack();
 
 ?>
+
