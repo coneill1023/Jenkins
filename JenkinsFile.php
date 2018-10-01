@@ -73,7 +73,7 @@
 	*/
 
 	$authorization = array(
-		"authorization: Bearer bTE4OThmZGpoYmoxODRuZ2FxZnN0cGtkZmsxNHJpYzV2ZjFxZmNxMDdnMWdwaDB0a2c1OGMwb3I2MCY5NSYxNTM4MDYyMjcxOTA5",
+		"authorization: Bearer MzRrbzNtcTJzdGJmcWRncmM0bmdjNWJscWViMGlrdnMzZDk1b2NjdWQ4aTNkc2ZhZWp1YWs1MHBxMCY5NSYxNTM4NDA4NDUxMTY0",
 		"content-type: application/json"
 	);
 
@@ -92,7 +92,7 @@
 	*/
 
 	$authorization = array(
-		"authorization: Bearer bTE4OThmZGpoYmoxODRuZ2FxZnN0cGtkZmsxNHJpYzV2ZjFxZmNxMDdnMWdwaDB0a2c1OGMwb3I2MCY5NSYxNTM4MDYyMjcxOTA5",
+		"authorization: Bearer MzRrbzNtcTJzdGJmcWRncmM0bmdjNWJscWViMGlrdnMzZDk1b2NjdWQ4aTNkc2ZhZWp1YWs1MHBxMCY5NSYxNTM4NDA4NDUxMTY0",
 		"content-type: application/json"
 	);
 
